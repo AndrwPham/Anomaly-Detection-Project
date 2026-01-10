@@ -1,0 +1,14 @@
+normalization1 = normalization([123.675, 116.28, 103.53], [58.395, 57.12, 57.375])
+
+model_optimization_flavor(optimization_level=3, compression_level=0, batch_size=8)
+
+pre_quantization_optimization(dead_layers_removal, policy=disabled)
+pre_quantization_optimization(weights_clipping, layers={conv*}, mode=disabled)
+pre_quantization_optimization(activation_clipping, layers={conv*}, mode=disabled)
+post_quantization_optimization(adaround, policy=enabled, shuffle=True, epochs=200)
+
+model_optimization_config(calibration, calibset_size=1024)
+model_optimization_config(checker_cfg, dataset_size=512, batch_size=8, analyze_mode=advanced)
+
+allocator_param(timeout=1h)
+performance_param(compiler_optimization_level=max)

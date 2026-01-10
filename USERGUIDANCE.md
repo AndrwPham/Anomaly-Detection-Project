@@ -1,8 +1,4 @@
-# User Guidance: Running the Code (Post-Quantization)
-
-This guide focuses on running the project after you already have `.hef` files.
-Quantization and model compilation steps are intentionally omitted.
-
+# User Guidance: Running the Code on the Edge Device with HailoRT
 ## Prerequisites
 - Raspberry Pi 5 + Hailo-8
 - HailoRT 4.22.0
@@ -23,6 +19,15 @@ data/
     anomaly/
       ...
 ```
+
+
+## HEF compilation (used by scripts)
+The steps needed to produce a working HEF file are:
+- 1. `convert_onnx.py`: Parse to ONNX format (13 <= opset <= 16)
+- 2. `parse.py`: Parse to HAR file
+- 3. `optimize.py`: Optimize (quantize) with specific configurations mentioned in the model script
+- 4. `compile.py`: Compile to HEF, should use the maximum level of compilation
+The fully integrated pipeline is provided in `compile_hailo.py`.
 
 ## Environment Setup (venv + dependencies)
 Create a virtual environment and install required packages:
