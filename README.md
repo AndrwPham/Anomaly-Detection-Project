@@ -1,4 +1,4 @@
-# Anomaly Detection with MilkCarton Box
+# Application of Edge AI for Visual Anomaly Detection in Conveyor Belt Inspection (using Milkbox as dataset)
 
 Edge-based visual anomaly detection for milk carton box inspection on a conveyor belt.
 This project uses the EfficientAD teacher-student-autoencoder pipeline and runs on
